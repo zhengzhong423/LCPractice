@@ -1,0 +1,36 @@
+{
+  "*.*": {
+      "TableRowCountValidator":{
+          "timeFilters":[
+            {
+              "timeColumName":"modified_d",
+              "operator":">=",
+              "function"
+            },
+            {
+
+            }
+          ],
+          "columnFilters":[]
+        }
+      },
+
+  "tlc.*": {}
+  ,
+  "tlc.lc$loan": {
+  	"EXCLUDE":["TableRowCountValidator"]
+  ,
+    "VALIDATORS":[
+      {"TableRowCountValidator":{
+          "timeFilters":["modified_d>=${dayDiffFromToday(-60)}", "modified_d<=${dayDiffFromToday(-1)}"],
+          "columnFilters":[]
+      }}]
+  },
+  "TLC.LC$PD": {
+    "VALIDATORS":[
+      {"TableRowCountValidator":{
+          "timeFilters":["modified_d>=${dayDiffFromToday(-60)}", "modified_d<=${dayDiffFromToday(-1)}"],
+          "columnFilters":[]
+      }}]
+  }
+}
